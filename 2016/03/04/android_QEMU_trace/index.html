@@ -9,10 +9,10 @@
   <meta name="description" content="实验室大佬给我分配了个任务，抓取native的指令trace，其实Android AOSP中QEMU虚拟机是有trace功能代码的，但是不知道是编译选项问题还是什么地方的问题，模拟器都没办法使用-trace参数研究这个问题的时候遇到了很多的坑，也get了很多新技能，从AOSP的编译，到QEMU的结构，还有VMI的一些知识，一直在挖坑和填坑的循环中，最终在快要走投无路的时候，无意中发现了BUG的关键">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于QEMU的Android native指令trace 工具">
-<meta property="og:url" content="https://d4by7o.github.io/2015/03/04/android_QEMU_trace/index.html">
+<meta property="og:url" content="https://d4by7o.github.io/2016/03/04/android_QEMU_trace/index.html">
 <meta property="og:site_name" content="d4by7o">
 <meta property="og:description" content="实验室大佬给我分配了个任务，抓取native的指令trace，其实Android AOSP中QEMU虚拟机是有trace功能代码的，但是不知道是编译选项问题还是什么地方的问题，模拟器都没办法使用-trace参数研究这个问题的时候遇到了很多的坑，也get了很多新技能，从AOSP的编译，到QEMU的结构，还有VMI的一些知识，一直在挖坑和填坑的循环中，最终在快要走投无路的时候，无意中发现了BUG的关键">
-<meta property="og:updated_time" content="2016-05-19T18:38:42.843Z">
+<meta property="og:updated_time" content="2016-05-19T18:43:28.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于QEMU的Android native指令trace 工具">
 <meta name="twitter:description" content="实验室大佬给我分配了个任务，抓取native的指令trace，其实Android AOSP中QEMU虚拟机是有trace功能代码的，但是不知道是编译选项问题还是什么地方的问题，模拟器都没办法使用-trace参数研究这个问题的时候遇到了很多的坑，也get了很多新技能，从AOSP的编译，到QEMU的结构，还有VMI的一些知识，一直在挖坑和填坑的循环中，最终在快要走投无路的时候，无意中发现了BUG的关键">
@@ -95,6 +95,8 @@
 				        
 							<li><a href="/archives">所有文章</a></li>
 				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
 						</ul>
 					</nav>
 					<nav class="header-nav">
@@ -167,6 +169,8 @@
 		        
 					<li><a href="/archives">所有文章</a></li>
 		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
 		        <div class="clearfix"></div>
 				</ul>
 			</nav>
@@ -190,8 +194,8 @@
       <div class="body-wrap"><article id="post-android_QEMU_trace" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/03/04/android_QEMU_trace/" class="article-date">
-  	<time datetime="2015-03-03T16:00:00.000Z" itemprop="datePublished">2015-03-04</time>
+      <a href="/2016/03/04/android_QEMU_trace/" class="article-date">
+  	<time datetime="2016-03-03T16:00:00.000Z" itemprop="datePublished">2016-03-04</time>
 </a>
     </div>
   
@@ -240,7 +244,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/04/16/myapp_crawler/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/04/16/myapp_crawler/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
@@ -281,7 +285,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="android_QEMU_trace" data-title="基于QEMU的Android native指令trace 工具" data-url="https://d4by7o.github.io/2015/03/04/android_QEMU_trace/"></div>
+	<div class="ds-thread" data-thread-key="android_QEMU_trace" data-title="基于QEMU的Android native指令trace 工具" data-url="https://d4by7o.github.io/2016/03/04/android_QEMU_trace/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
