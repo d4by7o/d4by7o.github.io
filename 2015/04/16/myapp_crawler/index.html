@@ -4,18 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>国内应用市场APP爬虫优化 | d4by7o</title>
+  <title>应用宝APP爬虫 | d4by7o</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="测试">
+  <meta name="description" content="最近由于科研需要，需要爬一些国内的应用市场，收集一批app，github上有人做过这个事情，android-apps-crawler 这是一个基于scrapy的爬虫，项目完成了基本的功能，获得url放到数据库，多线程下载。但是对于科研需求来说，获得的信息当然越多越好&amp;lt;(￣ˇ￣)/，仅仅一个url怎么能满足呢。
+很久之前写过一些爬虫，但是没有接触过scrapy，大概研究了下，感觉这是个黑科技，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="国内应用市场APP爬虫优化">
+<meta property="og:title" content="应用宝APP爬虫">
 <meta property="og:url" content="https://d4by7o.github.io/2015/04/16/myapp_crawler/index.html">
 <meta property="og:site_name" content="d4by7o">
-<meta property="og:description" content="测试">
-<meta property="og:updated_time" content="2016-05-19T15:32:20.671Z">
+<meta property="og:description" content="最近由于科研需要，需要爬一些国内的应用市场，收集一批app，github上有人做过这个事情，android-apps-crawler 这是一个基于scrapy的爬虫，项目完成了基本的功能，获得url放到数据库，多线程下载。但是对于科研需求来说，获得的信息当然越多越好&amp;lt;(￣ˇ￣)/，仅仅一个url怎么能满足呢。
+很久之前写过一些爬虫，但是没有接触过scrapy，大概研究了下，感觉这是个黑科技，">
+<meta property="og:updated_time" content="2016-05-19T16:50:38.634Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="国内应用市场APP爬虫优化">
-<meta name="twitter:description" content="测试">
+<meta name="twitter:title" content="应用宝APP爬虫">
+<meta name="twitter:description" content="最近由于科研需要，需要爬一些国内的应用市场，收集一批app，github上有人做过这个事情，android-apps-crawler 这是一个基于scrapy的爬虫，项目完成了基本的功能，获得url放到数据库，多线程下载。但是对于科研需求来说，获得的信息当然越多越好&amp;lt;(￣ˇ￣)/，仅仅一个url怎么能满足呢。
+很久之前写过一些爬虫，但是没有接触过scrapy，大概研究了下，感觉这是个黑科技，">
   
     <link rel="alternative" href="/atom.xml" title="d4by7o" type="application/atom+xml">
   
@@ -72,13 +75,13 @@
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>Menu</li>
-						<li>Tags</li>
+						<li>菜单</li>
+						<li>标签</li>
 						
-						<li>Links</li>
+						<li>友情链接</li>
 						
 						
-						<li>Über</li>
+						<li>关于我</li>
 						
 					</ul>
 				</div>
@@ -204,7 +207,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      国内应用市场APP爬虫优化
+      应用宝APP爬虫
     </h1>
   
 
@@ -228,7 +231,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>测试</p>
+        <p>最近由于科研需要，需要爬一些国内的应用市场，收集一批app，github上有人做过这个事情，<a href="https://github.com/mssun/android-apps-crawler" target="_blank" rel="external">android-apps-crawler</a><br> 这是一个基于<a href="http://scrapy.org/" target="_blank" rel="external">scrapy</a>的爬虫，项目完成了基本的功能，获得url放到数据库，多线程下载。但是对于<em>科研需求</em>来说，获得的信息当然越多越好&lt;(￣ˇ￣)/，仅仅一个url怎么能<br>满足呢。</p>
+<p>很久之前写过一些爬虫，但是没有接触过scrapy，大概研究了下，感觉这是个黑科技，从此妈妈再也不用担心我不会写爬虫了，寻找链接的逻辑都已经内置，只需要修改过滤逻辑就行。</p>
+<p>应用宝的应用详细信息页面里提供了很丰富的信息，包括应用名，下载量，类别，文件大小等等，这些信息都可能用得到。我们要做的事情就是把这些东西都爬下来。</p>
+<a id="more"></a>
+<h2 id="分析scrapy结构"><a href="#分析scrapy结构" class="headerlink" title="分析scrapy结构"></a>分析scrapy结构</h2><p>这个<a href="http://doc.scrapy.org/en/latest/" target="_blank" rel="external">黑科技</a>文档很全，甚至还有<a href="http://scrapy-chs.readthedocs.io/zh_CN/latest/intro/tutorial.html" target="_blank" rel="external">中文文档</a><br>我们接下来分析这个框架的一些关键结构</p>
 
       
     </div>
@@ -257,7 +264,7 @@
 <div class="share_jia">
 	<!-- JiaThis Button BEGIN -->
 	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<span class="jiathis_txt">分享到: &nbsp; </span>
 		<a class="jiathis_button_facebook"></a> 
     <a class="jiathis_button_twitter"></a>
     <a class="jiathis_button_plus"></a> 
@@ -279,7 +286,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="myapp_crawler" data-title="国内应用市场APP爬虫优化" data-url="https://d4by7o.github.io/2015/04/16/myapp_crawler/"></div>
+	<div class="ds-thread" data-thread-key="myapp_crawler" data-title="应用宝APP爬虫" data-url="https://d4by7o.github.io/2015/04/16/myapp_crawler/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
