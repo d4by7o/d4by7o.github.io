@@ -214,7 +214,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近写网站，无意间打开了静态页面这个新世界的大门，从开始接触html+css发现写出来网站难看的要死，到学会抄一些html5+css3的漂亮插件，再到bootstrap的学习速成，<br>发现我的前端技能树点的奇形怪状的，毕竟不是专业写前端的的，没有时间系统学习，所以面对各种前端需求的时候最是头痛。然而这几天在使用hexo的时候，<br>发现对于模板的二次开发，还是很有意思的。在花了两天时间改了一个漂亮的模板之后，拿给周围人看的时候心里还是十分有成就感的。</p>
+        <p>最近写网站，无意间打开了静态页面这个新世界的大门，从开始接触html+css发现写出来网站难看的要死，到学会抄一些html5+css3的漂亮插件，再到bootstrap的学习速成，发现我的前端技能树点的奇形怪状的。毕竟不是专业写前端的，没有时间系统学习，所以面对各种前端需求的时候最是头痛。<br>然而这几天在使用hexo的时候，发现对于模板的二次开发，还是很有意思的。在花了两天时间改了一个漂亮的模板之后，拿给周围人看的时候心里还是十分有成就感的。</p>
       
     </div>
     
@@ -278,7 +278,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近由于科研需要，需要爬一些国内的应用市场，收集一批app，github上有人做过这个事情，<a href="https://github.com/mssun/android-apps-crawler">android-apps-crawler</a><br> 这是一个基于<a href="http://scrapy.org/">scrapy</a>的爬虫，项目完成了基本的功能，获得url放到数据库，多线程下载。但是对于<strong>科研需求</strong>来说，获得的信息当然越多越好&lt;(￣ˇ￣)/，仅仅一个url怎么能满足呢。</p>
+        <p>最近由于科研需要，需要爬一些国内的应用市场，收集一批app，github上有人做过这个事情，<a href="https://github.com/mssun/android-apps-crawler">android-apps-crawler</a><br> 这是一个基于<a href="http://scrapy.org/">scrapy</a>的爬虫，项目完成了基本的功能，获得url放到数据库，多线程下载。但是对于<code>科研需求</code>来说，获得的信息当然越多越好&lt;(￣ˇ￣)/，仅仅一个url怎么能满足呢。</p>
 <p>很久之前写过一些爬虫，但是没有接触过scrapy，大概研究了下，感觉这是个黑科技，从此妈妈再也不用担心我不会写爬虫了，寻找链接的逻辑都已经内置，只需要修改过滤逻辑就行。</p>
 <p>应用宝的应用详细信息页面里提供了很丰富的信息，包括应用名，下载量，类别，文件大小等等，这些信息都可能用得到。我们要做的事情就是把这些东西都爬下来。</p>
       
@@ -335,7 +335,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/04/android_QEMU_trace/">基于QEMU的Android native指令trace 工具</a>
+      <a class="article-title" href="/2016/03/04/android_QEMU_trace/">基于QEMU的Android native指令trace 工具（一）</a>
     </h1>
   
 
@@ -344,7 +344,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>实验室大佬给我分配了个任务，抓取native的指令trace，其实Android AOSP中QEMU虚拟机是有trace功能代码的，但是不知道是编译选项问题还是什么地方的问题，模拟器都没办法使用-trace参数<br>研究这个问题的时候遇到了很多的坑，也get了很多新技能，从AOSP的编译，到QEMU的结构，还有VMI的一些知识，一直在挖坑和填坑的循环中，最终在快要走投无路的时候，无意中发现了BUG的关键所在……<br>其实模拟器的trace功能没有问题，出问题的是readtrace相关代码，然而，最终我只改了不到十行代码就能够完整的使用trace功能。</p>
+        <p>实验室大佬给我分配了个任务，抓取native的指令trace，其实Android AOSP中QEMU虚拟机是有trace功能代码的，但是不知道是编译选项问题还是什么地方的问题，模拟器都没办法使用-trace参数。<br>研究这个问题的时候遇到了很多的坑，也get了很多新技能，从AOSP的编译，到QEMU的结构，还有VMI的一些知识，一直在挖坑和填坑的循环中，最终在快要走投无路的时候，无意中发现了BUG的关键所在……<br>其实模拟器的trace功能没有问题，出问题的是readtrace相关代码，然而，最终我只改了不到十行代码就能够完整的使用trace功能。</p>
       
     </div>
     
