@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>基于QEMU的Android native指令trace 工具（一） | d4by7o</title>
+  <title>基于QEMU的Android native指令trace 工具 | d4by7o</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="实验室大佬给我分配了个任务，抓取native的指令trace，其实Android AOSP中QEMU虚拟机是有trace功能代码的，但是不知道是编译选项问题还是什么地方的问题，模拟器都没办法使用-trace参数。研究这个问题的时候遇到了很多的坑，也get了很多新技能，从AOSP的编译，到QEMU的结构，还有VMI的一些知识，一直在挖坑和填坑的循环中，最终在快要走投无路的时候，无意中发现了BUG的关">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于QEMU的Android native指令trace 工具（一）">
+<meta property="og:title" content="基于QEMU的Android native指令trace 工具">
 <meta property="og:url" content="https://d4by7o.github.io/2015/12/21/android_QEMU_trace/index.html">
 <meta property="og:site_name" content="d4by7o">
 <meta property="og:description" content="实验室大佬给我分配了个任务，抓取native的指令trace，其实Android AOSP中QEMU虚拟机是有trace功能代码的，但是不知道是编译选项问题还是什么地方的问题，模拟器都没办法使用-trace参数。研究这个问题的时候遇到了很多的坑，也get了很多新技能，从AOSP的编译，到QEMU的结构，还有VMI的一些知识，一直在挖坑和填坑的循环中，最终在快要走投无路的时候，无意中发现了BUG的关">
-<meta property="og:updated_time" content="2016-05-22T09:07:04.655Z">
+<meta property="og:updated_time" content="2016-05-22T09:32:00.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于QEMU的Android native指令trace 工具（一）">
+<meta name="twitter:title" content="基于QEMU的Android native指令trace 工具">
 <meta name="twitter:description" content="实验室大佬给我分配了个任务，抓取native的指令trace，其实Android AOSP中QEMU虚拟机是有trace功能代码的，但是不知道是编译选项问题还是什么地方的问题，模拟器都没办法使用-trace参数。研究这个问题的时候遇到了很多的坑，也get了很多新技能，从AOSP的编译，到QEMU的结构，还有VMI的一些知识，一直在挖坑和填坑的循环中，最终在快要走投无路的时候，无意中发现了BUG的关">
   
     <link rel="alternative" href="/atom.xml" title="d4by7o" type="application/atom+xml">
@@ -204,7 +204,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      基于QEMU的Android native指令trace 工具（一）
+      基于QEMU的Android native指令trace 工具
     </h1>
   
 
@@ -254,8 +254,16 @@
 <li>read_trace工具出了问题</li>
 </ol>
 </blockquote>
-<p>由于trace的结果都是经过压缩的，所以没办法直接用文本编辑器看，然而我对这个压缩算法也不熟悉，没法写出工具解压。<br>然后开始在网上搜索，发现了其他人做的一个项目，他们的项目说明中说完善了Android上的trace功能，并且还发布了一个视频，教你怎么trace，视频发布时间是15年4月份，视频中项目代码运行状况很好，看上去十分perfect<br>但是在10月份我用的时候项目里代码已经充满了BUG，竟然还有人把自己的home目录的绝对路径放到了trace的关键代码里，好吧，再次失望了。<br>之后，我又尝试了一下一篇论文中的工具，<a href="http://www.cs.columbia.edu/~lierranli/coms6998-11Fall2012/papers/droidscope_usenixsec2012.pdf" target="_blank" rel="external">Droidscope</a>论文中提出了一种基于VMI的分析技术，并且提到他实现了指令trace的功能，但问题是他的文档很乱，Android版本也只支持2.3。<br>试着跑了一下，发现不能用，需要自己写插件，而且接口文档很少，所以有放弃了。<br>需求中有一项是分离trace中的pid相关的内容，所以必须知道当前trace是属于哪个进程的，这用到了VMI的技术，关于VMI技术，这里不深入介绍</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://source.android.com/source/building.html" target="_blank" rel="external">http://source.android.com/source/building.html</a><br><a href="http://ju.outofmemory.cn/entry/161736" target="_blank" rel="external">http://ju.outofmemory.cn/entry/161736</a><br><a href="https://yaapb.wordpress.com/2012/09/22/build-a-custom-android-emulator-image/" target="_blank" rel="external">https://yaapb.wordpress.com/2012/09/22/build-a-custom-android-emulator-image/</a></p>
+<p>由于trace的结果都是经过压缩的，所以没办法直接用文本编辑器看，然而我对这个压缩算法也不熟悉，没法写出工具解压。<br>然后开始在网上搜索，发现了其他人做的一个项目，他们的项目说明中说完善了Android上的trace功能，并且还发布了一个视频，教你怎么trace，视频发布时间是15年4月份，视频中项目代码运行状况很好，看上去十分perfect<br>但是在10月份我用的时候项目里代码已经充满了BUG，竟然还有人把自己的home目录的绝对路径放到了trace的关键代码里，好吧，再次失望了。<br>之后，我又尝试了一下一篇论文中的工具，<a href="http://www.cs.columbia.edu/~lierranli/coms6998-11Fall2012/papers/droidscope_usenixsec2012.pdf" target="_blank" rel="external">Droidscope</a>论文中提出了一种基于VMI的分析技术，并且提到他实现了指令trace的功能，但问题是他的文档很乱，Android版本也只支持2.3。<br>试着跑了一下，发现不能用，需要自己写插件，而且接口文档很少，所以有放弃了。<br>类似的尝试还有很多，但都没有什么结果，最后无奈，硬着头皮看源码。<br>需求中有一项是分离trace中的pid相关的内容，所以必须知道当前trace是属于哪个进程的，这用到了VMI的技术，关于VMI技术，这里不深入介绍，主要讲讲最后怎么解决的这个问题。<br>QEMU作为一个硬件虚拟化的平台，可以把ARM的nativ指令翻译成x86的，做法是取一段ARM的指令基本块，翻译成中间语言，再翻译成host的native代码。<br>trace过程就是在翻译成中间语言之前记录下每一个基本块的内容，在Android源码中，QEMU把每一个基本块编号，并且记录跟这个编号相关的PID等其他内容。<br>Android_QEMU的项目地址是<a href="https://github.com/CyanogenMod/android_external_qemu，" target="_blank" rel="external">https://github.com/CyanogenMod/android_external_qemu，</a> 项目也是好久不更新了，这里我们需要关注的问题是:</p>
+<blockquote>
+<p>在翻译阶段，每一个基本块都会按顺序调用一下函数：:</p>
+<pre><code>1. trace_bb_start()
+2. 对于基本块中的每条指令，calling trace_bb_insn()
+3. calling trace_bb_end()
+</code></pre></blockquote>
+<p>trace_bb_end()函数的内容<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">trace_bb_end</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>		ii, num_insns;</span><br><span class="line">    <span class="keyword">uint32_t</span>	insn;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">uint64_t</span> bb_num = hostToLE64(trace_static.bb_num);</span><br><span class="line">    <span class="comment">// If these are Thumb instructions, then encode that fact by setting</span></span><br><span class="line">    <span class="comment">// the low bit of the basic-block address to 1.</span></span><br><span class="line">    <span class="keyword">uint32_t</span> bb_addr = trace_static.bb_addr | trace_static.is_thumb;</span><br><span class="line">    bb_addr = hostToLE32(bb_addr);</span><br><span class="line">    num_insns = hostToLE32(trace_static.next_insn);</span><br><span class="line">    fwrite(&amp;bb_num, <span class="keyword">sizeof</span>(bb_num), <span class="number">1</span>, trace_static.fstream);</span><br><span class="line">    fwrite(&amp;bb_addr, <span class="keyword">sizeof</span>(bb_addr), <span class="number">1</span>, trace_static.fstream);</span><br><span class="line">    fwrite(&amp;num_insns, <span class="keyword">sizeof</span>(num_insns), <span class="number">1</span>, trace_static.fstream);</span><br><span class="line">    <span class="keyword">for</span> (ii = <span class="number">0</span>; ii &lt; trace_static.next_insn; ++ii) &#123;</span><br><span class="line">        insn = hostToLE32(trace_static.insns[ii]);</span><br><span class="line">        fwrite(&amp;insn, <span class="keyword">sizeof</span>(insn), <span class="number">1</span>, trace_static.fstream);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    trace_static.bb_num += <span class="number">1</span>;</span><br><span class="line">    trace_static.next_insn = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里面的bb_num就是编号，并且按顺序加一</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://source.android.com/source/building.html" target="_blank" rel="external">http://source.android.com/source/building.html</a><br><a href="http://ju.outofmemory.cn/entry/161736" target="_blank" rel="external">http://ju.outofmemory.cn/entry/161736</a><br><a href="https://yaapb.wordpress.com/2012/09/22/build-a-custom-android-emulator-image/" target="_blank" rel="external">https://yaapb.wordpress.com/2012/09/22/build-a-custom-android-emulator-image/</a><br><a href="http://www.cnblogs.com/long123king/p/3584053.html" target="_blank" rel="external">http://www.cnblogs.com/long123king/p/3584053.html</a></p>
 
       
     </div>
@@ -306,7 +314,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="android_QEMU_trace" data-title="基于QEMU的Android native指令trace 工具（一）" data-url="https://d4by7o.github.io/2015/12/21/android_QEMU_trace/"></div>
+	<div class="ds-thread" data-thread-key="android_QEMU_trace" data-title="基于QEMU的Android native指令trace 工具" data-url="https://d4by7o.github.io/2015/12/21/android_QEMU_trace/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
