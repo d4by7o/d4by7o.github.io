@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://d4by7o.github.io/2016/03/04/android_QEMU_trace/index.html">
 <meta property="og:site_name" content="d4by7o">
 <meta property="og:description" content="实验室大佬给我分配了个任务，抓取native的指令trace，其实Android AOSP中QEMU虚拟机是有trace功能代码的，但是不知道是编译选项问题还是什么地方的问题，模拟器都没办法使用-trace参数。研究这个问题的时候遇到了很多的坑，也get了很多新技能，从AOSP的编译，到QEMU的结构，还有VMI的一些知识，一直在挖坑和填坑的循环中，最终在快要走投无路的时候，无意中发现了BUG的关">
-<meta property="og:updated_time" content="2016-05-22T07:58:36.599Z">
+<meta property="og:updated_time" content="2016-05-22T08:00:13.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于QEMU的Android native指令trace 工具（一）">
 <meta name="twitter:description" content="实验室大佬给我分配了个任务，抓取native的指令trace，其实Android AOSP中QEMU虚拟机是有trace功能代码的，但是不知道是编译选项问题还是什么地方的问题，模拟器都没办法使用-trace参数。研究这个问题的时候遇到了很多的坑，也get了很多新技能，从AOSP的编译，到QEMU的结构，还有VMI的一些知识，一直在挖坑和填坑的循环中，最终在快要走投无路的时候，无意中发现了BUG的关">
@@ -241,7 +241,7 @@
 <p>查看可以添加的设备类型，要选择Tag/ABIs为arm的并且android版本为Android 4.4.2 (API level 19)<br>创建AVD,-n后面是AVD的名字，-t后面是target的number</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android create avd -n 2333 -t 1</span><br></pre></td></tr></table></figure>
 <p>启动AVD</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator -avd xxx -trace mm/ -kernel ~/.android/avd/zImage</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator -avd 2333 -trace <span class="built_in">test</span>/ -kernel ~/.android/avd/zImage</span><br></pre></td></tr></table></figure>
       
     </div>
     
