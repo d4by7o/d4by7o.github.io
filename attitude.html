@@ -2,17 +2,25 @@
 <body>
 <script language="javascript" type="text/javascript">
     // 以下方式直接跳转
-    var redirect_array = new Array();
-    var number = Math.random() - 1;
-    n = Math.ceil(number * 11);
-    redirect_array[0] = "11276595"
-    redirect_array[1] = "11277035"
-    redirect_array[2] = "11277007"
-    redirect_array[3] = "11277019"
-    url = "http://www.sojump.hk/jq/" + redirect_array[n] + ".aspx"
-    document.write("感谢您的参与，正在为您分配问卷")
-    document.write(url)
-    window.location.href = url;
+    var redirect_url = new Array();
+    var number = Math.random();
+
+    redirect_url[0] = "http://www.sojump.hk/jq/11276595.aspx"
+    redirect_url[1] = "http://www.sojump.hk/jq/11277035.aspx"
+    redirect_url[2] = "http://www.sojump.hk/jq/11277007.aspx"
+    redirect_url[3] = "http://www.sojump.hk/jq/11277019.aspx"
+
+    n = Math.ceil(number * redirect_url.length) - 1;
+    if (n == -1){
+        document.write("问卷调查已经结束，感谢您的参与！")
+    }
+    else {
+        url = redirect_url[n]
+        document.write("感谢您的参与，正在为您分配问卷<br>")
+        document.write(url)
+        window.location.href = url;
+    }
+
 
 </script>
 </body>
